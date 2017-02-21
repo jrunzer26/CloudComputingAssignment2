@@ -1,0 +1,116 @@
+html, body {
+  padding: 0px;
+  margin: 0px;
+  height: 100%;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.header {
+  color:white;
+  padding-left: 30px;
+	padding-top: 60px;
+	padding-bottom: 20px;
+  background-color: #673AB7;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: white;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.formLabel {
+  padding-bottom: 5px;
+}
+
+.footer {
+  background-color: #673AB7;
+  position: fixed;
+  color:white;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#signOut, #favorites, #profile, #feed {
+  margin-top: 30px;
+	margin-bottom: 20px;
+  margin-right: 20px;
+  float: right;
+  color: black;
+  background-color: white;
+  font-weight: bold;
+}
+
+h1 {
+  display: inline-block;
+}
+
+
+#font-big {
+  font-size: 25px;
+}
+
+
+.message > h5 {
+  font-weight: bold;
+}
+
+.aJob > .type {
+  padding-left: 8px;
+}
+
+.aJob > h3 {
+  padding-top: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.aJob > .title {
+  background-color: red;
+  padding-bottom: 8px;
+  padding-top: 8px;
+}
+hr {
+  border-color: black;
+}
+
+.aJob {
+  margin-bottom: 30px;
+  background-color: lightgreen;
+}
+
+.jobDes {
+  padding-left: 70px;
+  padding-right:70px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+label {
+  font-size: 18px;
+}
+
+.title {
+  text-align: center;
+}
+.row-centered {
+    text-align:center;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+    /* reset the text-align */
+    text-align:left;
+    /* inline-block space fix */
+    margin-right:-4px;
+}
+

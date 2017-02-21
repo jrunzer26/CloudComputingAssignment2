@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .container
+    #login
+      #form
+        .row
+          label Username
+          input(type="email" id="username" class="col-md-2 form-control")
+        .row
+          label Password
+          input(type="password" id="password" class="col-md-2 form-control")
+        .row
+          input(type="submit" id="add" value="Login" class="col-md=2 btn btn-default")
+          input(type="submit" id="add" value="Register" class="col-md=2 btn btn-default")
+        
