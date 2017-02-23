@@ -1,16 +1,14 @@
 extends layout
 
+block append extraScripts
+  script(src="/javascripts/login-controller.js")
+
 block content
   .container
     #login
       #form
-        .row
-          label Username
-          input(type="email" id="username" class="col-md-2 form-control")
-        .row
-          label Password
-          input(type="password" id="password" class="col-md-2 form-control")
-        .row
-          input(type="submit" id="add" value="Login" class="col-md=2 btn btn-default")
-          input(type="submit" id="add" value="Register" class="col-md=2 btn btn-default")
-        
+        div.row.row-centered
+          div.col-centered
+            a(class="btn btn-block btn-social btn-github" onclick="gitLogin()")
+              span(class="fa fa-github") 
+              | Sign in with GitHub

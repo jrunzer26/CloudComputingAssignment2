@@ -1,13 +1,15 @@
 var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');
+var util = require('../util.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', util.checkLogin, function(req, res, next) {
+  console.log(req.user);
   res.render('feed', { title: 'Job Feed' });
 });
 
-router.post('/positions', function(req, res, next) {
+router.post('/positions', util.checkLogin, function(req, res, next) {
   var jobs = [];
   //var des = req.body.des;
   //var locaiton = req.body.location;
