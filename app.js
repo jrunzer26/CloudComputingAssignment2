@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var passport = require('passport');
 var session = require('express-session');
+var Users = require('./models/Users.js');
 
 
 var feed = require('./routes/feed');
@@ -29,6 +30,18 @@ passport.use(new GitHubStrategy({
 }));
 
 passport.serializeUser(function(user, done) {
+  var dbUser;
+  Users.getUser(user.profile.id, function(aUser){
+    dbUser = aUser;
+    console.log(dbUser);
+    if (dbUser.length == 0) {
+      console.log('new user');
+      Users.addUser(user.profile.id, user.profile.username, function() {
+        console.log('done');
+      });
+    }
+  });
+
   // for the time being tou can serialize the user 
   // object {accessToken: accessToken, profile: profile }
   // In the real app you might be storing on the id like user.profile.id

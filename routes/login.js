@@ -15,8 +15,8 @@ router.get('/', function(req, res, next) {
 router.get('/github', 
   passport.authenticate('github', {scope: ['user:email'], session: true}),
   function(req, res) {
-    
-});
+  }
+);
 
 router.get('/github/callback',
   passport.authenticate('github', {failureRedirect: '/'}), 
@@ -25,6 +25,8 @@ router.get('/github/callback',
 });
 
 router.get('/logout', function(req, res) {
+  res.clearCookie('search');
+  res.clearCookie('location');
   req.logout();
   res.redirect('/');
 });

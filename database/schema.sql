@@ -1,10 +1,11 @@
 CREATE TABLE Users (
+    "id" int PRIMARY KEY,
     "username" varchar(255) NOT NULL PRIMARY KEY,
-    "password" varchar(255) NOT NULL
 );
 
 CREATE TABLE Favorites (
     "id" SERIAL PRIMARY KEY,
+    "userID" int,
     "username" varchar(255),
-    FOREIGN KEY(username) REFERENCES Users(username)
+    FOREIGN KEY(userID) REFERENCES Users(username)
 );

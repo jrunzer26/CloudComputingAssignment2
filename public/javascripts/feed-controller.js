@@ -1,12 +1,14 @@
 function getPostings() {
+  var location = $.cookie('location');
+  var des = $.cookie('search');
+  var postData = {location: location, des: des};
   $.ajax({
     type: 'POST',
     url: '/feed/positions',
+    data: JSON.stringify(postData),
     contentType: "application/json; charset=utf-8",
     success: function(res) {
       console.log("Successfull feed");
-      console.log(res[0].title);
-      console.log(res[0].url);
       insertPostings(res);
     },
     error: function(res) {
@@ -41,7 +43,7 @@ function insertPostings(postings) {
     '</div>';
   }
   if (postings.length == 0) {
-    jobFeedHtml += "No Job Postings"
+    jobFeedHtml += "<p>No Job Postings</p>"
   }
   insertIntoList(jobFeedHtml);
 }

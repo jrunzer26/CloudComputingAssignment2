@@ -1,5 +1,5 @@
 @echo off
-echo DROP DATABASE IF EXISTS mobile; | psql
-echo CREATE DATABASE mobile; | psql 
-psql mobile < schema.sql
-psql mobile < users.sql
+echo DROP DATABASE IF EXISTS Users; | psql
+echo CREATE DATABASE Users; | psql 
+psql jobdb < schema.sql
+psql jobdb < users.sql
