@@ -1,3 +1,4 @@
+var socket = io();
 function navSignOut() {
   window.location = '/logout';
 }
