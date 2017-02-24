@@ -46,23 +46,44 @@ exports.updateProfile = function(id, search, location, callback) {
 }
 
 exports.favoriteJob = function(userID, jobID) {
-  db.none('INSERT INTO public."Favorites" COLUMNS(jobID, userID) VALUES($1, $2);', [jobID, userID])
-    .then(function() {
-      console.log('success');
-      console.log
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
+  db.any('SELECT * FROM public."Favorites" WHERE "userID" = $1 AND "jobID" = $2;', [userID, jobID])
+  .then(function(data) {
+    if (data.length < 1) {
+      db.none('INSERT INTO public."Favorites"("jobID", "userID") VALUES($1, $2);', [jobID, userID])
+        .then(function() {
+          console.log('success');
+        })
+        .catch(function(err) {
+          console.log(err);
+        });
+    }
+  })
+  .catch(function(err) {
+    console.log(err);
+  })
+  
 }
 
 exports.getFavorites = function(id, callback) {
   console.log('faves');
-  db.any('SELECT * FROM public."Favorites" WHERE id = $1;', [id])
+  db.any('SELECT * FROM public."Favorites" WHERE "userID" = $1;', [id])
   .then(function(data) {
+    console.log('success');
+    console.log(data);
     return callback(data);
   })
   .catch(function(err) {
+    console.log(err);
+  });
+}
+
+exports.removeFavorite = function(userID, jobID) {
+  console.log('remove fave');
+  db.none('DELETE FROM public."Favorites" WHERE "userID" = $1 AND "jobID" = $2;', [userID, jobID])
+  .then(function() {
+    console.log('success');
+  })
+  .catch(function(err){
     console.log(err);
   });
 }

@@ -114,3 +114,7 @@ label {
     margin-right:-4px;
 }
 
+.clickable {
+     cursor: pointer
+}
+
