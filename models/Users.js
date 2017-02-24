@@ -87,3 +87,14 @@ exports.removeFavorite = function(userID, jobID) {
     console.log(err);
   });
 }
+
+exports.getActiveUsers = function(callback) {
+  console.log('active users');
+  db.any('SELECT * FROM public."Active";')
+  .then(function(userCount) {
+    callback(userCount[0].count);
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+}

@@ -1,15 +1,18 @@
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
-
+var Users = require('../models/Users.js');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  if (req.query.login) {
-    console.log(req.query.login);
-    res.render('loginFailed', {title: 'Job SearchLogin'});
-  }
-  res.render('login', { title: 'Job Search Login' });
+  Users.getActiveUsers(function(activeUsers) {
+    console.log('active: ' + activeUsers);
+    if (req.query.login) {
+        console.log(req.query.login);
+        res.render('loginFailed', {title: 'Job SearchLogin', active: activeUsers});
+    } else
+      res.render('login', { title: 'Job Search Login', active: activeUsers });
+  })
 });
 
 router.get('/github', 

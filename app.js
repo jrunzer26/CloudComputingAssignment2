@@ -21,8 +21,9 @@ var GitHubStrategy = require('passport-github2').Strategy;
 passport.use(new GitHubStrategy({
     clientID: '7cb002d2a9ca3b1594a5',
     clientSecret: '8e021968a5b0f2af537b8795ba3dde9ee295db09',
-    callbackURL: "http://ec2-52-34-113-49.us-west-2.compute.amazonaws.com/github/callback"
-  },
+    //callbackURL: "http://ec2-52-34-113-49.us-west-2.compute.amazonaws.com/github/callback"
+    callbackURL:"http://localhost:3000/github/callback"
+},
   function(accessToken, refreshToken, profile, done) {
     done(null, {accessToken: accessToken, 
       profile: profile
