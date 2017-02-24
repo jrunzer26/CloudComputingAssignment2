@@ -83,18 +83,22 @@ app.use(function(req,res,next){
 io.on('connection', function(socket) {
   Users.addActiveUser(function() {
     console.log('added active user');
-  });
+    io.emit('active');
+});
   socket.on('disconnect', function() {
     Users.removeActiveUser(function() {
       console.log('removed user');
+      io.emit('unactive');
     }); 
   });
   socket.on('connect', function() {
     Users.removeActiveUser(function() {
       console.log('removed user');
+      io.emit('unactive');
     });
   });
   socket.on('timeout', function() {
+    io.emit('unactive');
     Users.removeActiveUser(function() {
       console.log('removed user');
     });
