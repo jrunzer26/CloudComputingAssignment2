@@ -98,3 +98,26 @@ exports.getActiveUsers = function(callback) {
     console.log(err);
   });
 }
+
+exports.addActiveUser = function(callback) {
+  db.any('UPDATE public."Active" SET "count" = "count" + 1;')
+  .then(function() {
+    console.log('updated');
+    callback();
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+}
+
+exports.removeActiveUser = function(callback) {
+  db.any('UPDATE public."Active" SET "count" = "count" - 1;')
+  .then(function() {
+    console.log('updated remove');
+    callback();
+  })
+  .catch(function(err) {
+    console.log(err);
+  });
+}
+
