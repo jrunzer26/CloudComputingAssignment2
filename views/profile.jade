@@ -7,11 +7,14 @@ block content
   .container
     .row
       label(id="username") #{username}
+    br
     .row
       label Search
       input(type="text" id="search" class="col-md-2 form-control")
+    br
     .row
       label Location
       input(type="text" id="location" class="col-md-2 form-control")
+    br
     .row
       input(type="submit" id="add" value="Save" onclick="saveProfile()" class="col-md=2 btn btn-default")
