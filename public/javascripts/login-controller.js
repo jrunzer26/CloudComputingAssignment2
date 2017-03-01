@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * login-controller.js
+ * 3/1/2017
+ * Client side javascript to update active users and to redirect to github login.
+ */
+
 /**
  * Navigation to github oAuth login.
  */

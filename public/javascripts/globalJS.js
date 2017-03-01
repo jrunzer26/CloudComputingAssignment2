@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * globalJS.js
+ * 3/1/2017
+ * Client side javascript for navigation and socket initialization.
+ */
+
 var socket = io();
 
 // navigation functions.

@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * feed-controller.js
+ * 3/1/2017
+ * Client side javascript to display the GitHub jobs, and server side interaction.
+ */
+
 /**
  * Gets the postings based on the users profile from the server.
  */

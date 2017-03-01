@@ -1,3 +1,10 @@
+//
+// Author: Jason Runzer
+// app.js
+// 3/1/2017
+// The main application.
+//
+
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');

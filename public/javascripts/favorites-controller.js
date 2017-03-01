@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * favorites-controller.js
+ * 3/1/2017
+ * Client side javascript to display favorite jobs, and server side interaction.
+ */
+
 /**
  * Gets the users favorites from the server.
  */

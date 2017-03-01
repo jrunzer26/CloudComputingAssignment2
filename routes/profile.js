@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * profile.js
+ * 3/1/2017
+ * Profile route to handle fetching a user's profile and saving a users profile.
+ */
+
 var express = require('express');
 var router = express.Router();
 var util = require('../util.js');

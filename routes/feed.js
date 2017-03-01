@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * feed.js
+ * 3/1/2017
+ * Feed route to handle getting jobs based on a users location and search.
+ */
+
 var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');

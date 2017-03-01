@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * favorites.js
+ * 3/1/2017
+ * Favorites route to handle favoriting jobs and retreiving a users favorites.
+ */
+
 var express = require('express');
 var router = express.Router();
 var rp = require('request-promise');

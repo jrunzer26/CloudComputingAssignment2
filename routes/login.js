@@ -1,3 +1,10 @@
+/** 
+ * Author: Jason Runzer
+ * login.js
+ * 3/1/2017
+ * Login route to handle loging a user into the passport system, and to logout.
+ */
+
 var express = require('express');
 var router = express.Router();
 var passport = require('passport');
