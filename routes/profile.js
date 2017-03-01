@@ -3,11 +3,14 @@ var router = express.Router();
 var util = require('../util.js');
 var Users = require('../models/Users.js');
 
-/* GET home page. */
+/* GET profile page. */
 router.get('/', util.checkLogin, function(req, res, next) {
   res.render('profile', { title: 'Profile', username: req.user.username });
 });
 
+/**
+ * Saves a users location and search preference to their profile in the database.
+ */
 router.post('/save', util.checkLogin, function(req, res, next) {
   Users.updateProfile(req.user.id, req.body.search, req.body.location, function(success) {
     if (success) {

@@ -1,11 +1,20 @@
+/**
+ * Navigation to github oAuth login.
+ */
 function gitLogin() {
     window.location = '/github';
 }
 
+/**
+ * Update the user count.
+ */
 socket.on('active', function (data) {
   updateActive();
 });
 
+/**
+ * Remove a user count.
+ */
 socket.on('unactive', function (data) {
     removeActive();
 });

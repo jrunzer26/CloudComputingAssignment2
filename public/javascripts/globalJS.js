@@ -1,4 +1,6 @@
 var socket = io();
+
+// navigation functions.
 function navSignOut() {
   window.location = '/logout';
 }
@@ -14,3 +16,4 @@ function navFave() {
 function navProfile() {
   window.location ='/profile';
 }
+// end navigation functions.

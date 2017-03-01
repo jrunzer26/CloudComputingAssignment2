@@ -1,3 +1,6 @@
+/**
+ * Gets the users favorites from the server.
+ */
 function getFavorites() {
   console.log('faves');
   $.ajax({
@@ -13,6 +16,9 @@ function getFavorites() {
   });
 }
 
+/**
+ * Inserts the favorites into the list.
+ */
 function processFavoriteList(res) {
   if (res.length == 0) {
     $('#jobs').append('<p>No Favorites</p>');
@@ -23,6 +29,9 @@ function processFavoriteList(res) {
   }
 }
 
+/**
+ * Gets the github data for a job.
+ */
 function getPostData(res) {
   $.ajax({
     type: 'POST',
@@ -38,6 +47,9 @@ function getPostData(res) {
   });
 }
 
+/**
+ * Processes the favorite job posting into html.
+ */
 function processFavorite(posting) {
   console.log(posting);
   var jobFeedHtml = '' +
@@ -64,12 +76,18 @@ function processFavorite(posting) {
   $('#jobs').append(jobFeedHtml);
 }
 
+/**
+ * Remove a favorited job id.
+ */
 function favorite(id) {
   console.log(id);
   $('#'+id).remove();
   removeFavoriteFromServer(id);
 }
 
+/**
+ * Removes a favorite from a server.
+ */
 function removeFavoriteFromServer(id) {
   $.ajax({
     type: 'POST',
@@ -78,7 +96,9 @@ function removeFavoriteFromServer(id) {
     contentType: "application/json; charset=utf-8"
   });
 }
-
+/**
+ * Get the favorites on ready.
+ */
 $(document).ready(function() {
   getFavorites();
 });

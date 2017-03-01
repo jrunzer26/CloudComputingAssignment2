@@ -1,3 +1,6 @@
+/**
+ * Posts a users profile to the server.
+ */
 function saveProfile() {
   console.log('save profile');
   var postData = {
@@ -18,15 +21,24 @@ function saveProfile() {
   });
 }
 
+/**
+ * Navigate to default page after profile setup.
+ */
 function profileSaved(){
   window.location = "/feed";
 }
 
+/**
+ * Show the profile items.
+ */
 function showProfile() {
     $('#search').val($.cookie('search'));
     $('#location').val($.cookie('location'));
 }
 
+/**
+ * On ready, show the user's profile.
+ */
 $(document).ready(function() {
     showProfile();
 });

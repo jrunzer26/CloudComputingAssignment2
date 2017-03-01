@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 var Users = require('../models/Users.js');
 
-/* GET home page. */
+/* GET login page. */
 router.get('/', function(req, res, next) {
   Users.getActiveUsers(function(activeUsers) {
     console.log('active: ' + activeUsers);
@@ -15,18 +15,27 @@ router.get('/', function(req, res, next) {
   })
 });
 
+/**
+ * OAuth passport login initiation.
+ */
 router.get('/github', 
   passport.authenticate('github', {scope: ['user:email'], session: true}),
   function(req, res) {
   }
 );
 
+/**
+ * OAuth callback for github.
+ */
 router.get('/github/callback',
   passport.authenticate('github', {failureRedirect: '/'}), 
   function(req, res) {
     res.redirect('/feed');
 });
 
+/**
+ * Logout a user and clears cookies.
+ */
 router.get('/logout', function(req, res) {
   res.clearCookie('search');
   res.clearCookie('location');

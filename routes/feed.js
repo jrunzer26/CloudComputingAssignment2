@@ -4,7 +4,7 @@ var rp = require('request-promise');
 var util = require('../util.js');
 var Users = require('../models/Users.js');
 
-/* GET home page. */
+/* GET feed page. */
 router.get('/', util.checkLogin, function(req, res, next) {
   //console.log(req.user);
   Users.getUser(req.user.id, function(data) {
@@ -18,6 +18,9 @@ router.get('/', util.checkLogin, function(req, res, next) {
   });
 });
 
+/**
+ * Get job positions from github jobs based on location, description.
+ */
 router.post('/positions', util.checkLogin, function(req, res, next) {
   var des = req.body.des;
   var location = req.body.location;

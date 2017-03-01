@@ -1,3 +1,6 @@
+/**
+ * Gets the postings based on the users profile from the server.
+ */
 function getPostings() {
   var location = $.cookie('location');
   var des = $.cookie('search');
@@ -17,6 +20,9 @@ function getPostings() {
   });
 }
 
+/**
+ * Processes the job postings into html from the server.
+ */
 function insertPostings(postings) {
   console.log('insert');
   var jobFeedHtml = "";
@@ -49,16 +55,25 @@ function insertPostings(postings) {
   insertIntoList(jobFeedHtml);
 }
 
+/**
+ * Inserts into the job list.
+ */
 function insertIntoList(jobFeedHtml) {
   $('#jobs').append(jobFeedHtml);
 }
 
+/**
+ * Favorites a job.
+ */
 function favorite(id) {
   console.log(id);
   $('#'+id).remove();
   addFavoriteOnServer(id);
 }
 
+/**
+ * Notifys the server of the job that was favorited.
+ */
 function addFavoriteOnServer(id) {
   $.ajax({
     type: 'POST',
@@ -68,7 +83,9 @@ function addFavoriteOnServer(id) {
   });
 }
 
-
+/**
+ * On ready get the job feed postings.
+ */
 $(document).ready(function() {
   getPostings();
 });

@@ -9,6 +9,9 @@ var cn = {
 
 var db = pgp(cn);
 
+/**
+ * Gets the user from the database.
+ */
 exports.getUser = function(id, callback) {
   db.any('SELECT * FROM public."Users" WHERE id = $1;', [id])
   .then(function(data) {
@@ -20,6 +23,9 @@ exports.getUser = function(id, callback) {
   });
 }
 
+/**
+ * Adds a user to the database.
+ */
 exports.addUser = function(id, username, callback) {
   db.none('INSERT INTO public."Users" VALUES($1, $2);', [id, username])
     .then(function() {
@@ -31,6 +37,9 @@ exports.addUser = function(id, username, callback) {
     });  
 }
 
+/**
+ * Updates a user in the database.
+ */
 exports.updateProfile = function(id, search, location, callback) {
   console.log('save id: ' + id);
   console.log('save location: ' + location);
@@ -45,6 +54,9 @@ exports.updateProfile = function(id, search, location, callback) {
     });  
 }
 
+/**
+ * Adds a favorite to the user's favorites.
+ */
 exports.favoriteJob = function(userID, jobID) {
   db.any('SELECT * FROM public."Favorites" WHERE "userID" = $1 AND "jobID" = $2;', [userID, jobID])
   .then(function(data) {
@@ -61,9 +73,11 @@ exports.favoriteJob = function(userID, jobID) {
   .catch(function(err) {
     console.log(err);
   })
-  
 }
 
+/**
+ * Gets the favorites for a given user.
+ */
 exports.getFavorites = function(id, callback) {
   console.log('faves');
   db.any('SELECT * FROM public."Favorites" WHERE "userID" = $1;', [id])
@@ -77,6 +91,9 @@ exports.getFavorites = function(id, callback) {
   });
 }
 
+/**
+ * Removes a favorite for a given user.
+ */
 exports.removeFavorite = function(userID, jobID) {
   console.log('remove fave');
   db.none('DELETE FROM public."Favorites" WHERE "userID" = $1 AND "jobID" = $2;', [userID, jobID])
@@ -88,6 +105,9 @@ exports.removeFavorite = function(userID, jobID) {
   });
 }
 
+/**
+ * Gets the count of active users.
+ */
 exports.getActiveUsers = function(callback) {
   console.log('active users');
   db.any('SELECT * FROM public."Active";')
@@ -99,6 +119,9 @@ exports.getActiveUsers = function(callback) {
   });
 }
 
+/**
+ * Increments the count of active users.
+ */
 exports.addActiveUser = function(callback) {
   db.any('UPDATE public."Active" SET "count" = "count" + 1;')
   .then(function() {
@@ -110,6 +133,9 @@ exports.addActiveUser = function(callback) {
   });
 }
 
+/**
+ * Decrements the active user count.
+ */
 exports.removeActiveUser = function(callback) {
   db.any('UPDATE public."Active" SET "count" = "count" - 1;')
   .then(function() {
